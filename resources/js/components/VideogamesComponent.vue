@@ -4,6 +4,7 @@
         <br>
         <div id="videogames_list">
             <div class="videogame" v-for="videogame in videogames" :key="videogame.id">
+                <span>id: {{ videogame.id }}</span>
                 <h2>
                     {{ videogame.title }}
                 </h2>
@@ -13,8 +14,7 @@
                 <h3>
                     Rating: {{ videogame.rating }}
                 </h3>
-                <button class="btn btn-danger" @click="videogameDelete(videogame.id)">Delete</button>
-                <hr>
+                <button v-if="user" class="btn btn-danger" @click="videogameDelete(videogame.id)">Delete</button>
             </div>
         </div>
     </div>
@@ -68,3 +68,15 @@
         }
     }
 </script>
+<style lang="sass">
+
+#videogames_list
+
+    .videogame
+    
+        width: 50%
+        margin: 15px auto
+        padding: 10px 0
+        border: 1px solid black
+
+</style>
