@@ -15,6 +15,11 @@ class CreateVideogamesTable extends Migration
     {
         Schema::create('videogames', function (Blueprint $table) {
             $table->id();
+
+            $table->string('title', 128);
+            $table->string('subtitle', 128);
+            $table->tinyInteger('rating')->unsigned();
+
             $table->timestamps();
         });
     }
