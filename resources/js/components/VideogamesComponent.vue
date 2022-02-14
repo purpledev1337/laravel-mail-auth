@@ -13,6 +13,7 @@
                 <h3>
                     Rating: {{ videogame.rating }}
                 </h3>
+                <button class="btn btn-danger" @click="videogameDelete(videogame.id)">Delete</button>
                 <hr>
             </div>
         </div>
@@ -27,6 +28,37 @@
 
                 videogames: []
             };
+        },
+        props: {
+
+            user: String
+        },
+        methods: {
+
+            videogameDelete(id) {
+
+                axios.get(`/api/videogames/delete/${id}`)
+                     .then(r => {
+
+                         const ind = this.getIndexById(id);
+                         this.videogames.splice(ind, 1);
+                     })
+                     .catch(e => console.error('e', e));
+            },
+            getIndexById(id) {
+
+                for (let x = 0; x < this.videogames.length; x++) {
+
+                    const videogame = this.videogames[x];
+
+                    if (videogame.id == id) {
+
+                        return x
+                    }
+                }
+
+                return -1;
+            }
         },
         mounted() {
             

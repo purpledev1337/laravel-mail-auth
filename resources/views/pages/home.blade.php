@@ -2,11 +2,6 @@
 
 @section('content')
 
-    @auth
-    <videogames-component></videogames-component>
-    @else
-    <h1>Hello, you need to login to see our list</h1>
-
-    @endauth
+    <videogames-component user="{{Auth::check()}}"></videogames-component>
 
 @endsection
