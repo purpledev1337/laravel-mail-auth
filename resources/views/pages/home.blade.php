@@ -2,7 +2,11 @@
 
 @section('content')
 
-    <h1>Hello</h1>
+    @auth
     <videogames-component></videogames-component>
+    @else
+    <h1>Hello, you need to login to see our list</h1>
+
+    @endauth
 
 @endsection

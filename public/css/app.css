@@ -10970,3 +10970,7 @@ body header {
   padding: 100px;
 }
 
+body header #logged_status {
+  float: right;
+}
+

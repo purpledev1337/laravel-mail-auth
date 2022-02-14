@@ -1,3 +1,61 @@
 <header>
-    Login / Logout
+
+    <h1 class="display-1">Videogames "world" database</h1>
+    
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
+    @auth
+
+    <div id="logged_status">
+        <h1>Hello {{ Auth::user() -> name }}!</h1>
+        <span class="blockquote-footer">You are registered from {{ date_format(Auth::user() -> created_at, 'jS F Y') }}</span>
+        <a class="btn btn-secondary" href="{{ route('logout') }}">Logout</a>
+    </div>
+
+    @else
+        
+    <h1>Login form</h1>
+
+        <form action="{{ route('login') }}" method="POST">
+
+            @method('POST')
+            @csrf
+
+            <label for="email">Email:</label>
+            <input type="text" name="email" placeholder="E-mail"> <br>
+            <label for="password">Password:</label>
+            <input type="password" name="password" placeholder="Password"> <br>
+            <input class="btn btn-primary" type="submit" value="LOGIN">
+
+        </form>
+
+        <h2>If you aren't registered yet, you can do it here.</h2>
+
+        <form action="{{ route('register') }}"  method="POST">
+
+            @method('POST')
+            @csrf
+
+            <label for="name">Name:</label>
+            <input type="text" name="name" placeholder="Nome"> <br>
+            <label for="email">Email:</label>
+            <input type="text" name="email" placeholder="E-mail"> <br>
+            <label for="password">Password:</label>
+            <input type="password" name="password" placeholder="Password"> <br>
+            <label for="password_confirmation">Password confirm:</label>
+            <input type="password" name="password_confirmation" placeholder="Password again"> <br>
+            
+            <input class="btn btn-success" type="submit" value="REGISTER">
+
+        </form>
+    @endauth
+
 </header>
