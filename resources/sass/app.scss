@@ -10,13 +10,43 @@
 
 body {
 
+    background-color: lightskyblue;
+
     header {
 
+        // width: 100%;
         padding: 100px;
+        display: flex;
+        justify-content: space-between;
 
         #logged_status {
 
-            float: right;
+            h6 {
+
+                font-weight: bold;
+                display: inline-block;
+                background-color: yellow;
+                border-radius: 20px;
+                font-size: 1.8em;
+                animation: pad infinite 3s;
+            }
+
+            h6:before {
+
+                content: "\21E8";
+            }
+            
+            h6:after {
+                
+                content: "\21E6";
+            }
+
+            @keyframes pad {
+                100% {
+
+                    text-decoration: underline;
+                }
+            }
         }
     }
 

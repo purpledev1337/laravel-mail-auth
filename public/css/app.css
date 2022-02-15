@@ -10963,14 +10963,43 @@ a.text-dark:focus {
 }
 
 body {
+  background-color: lightskyblue;
   text-align: center;
 }
 
 body header {
   padding: 100px;
+  display: flex;
+  justify-content: space-between;
 }
 
-body header #logged_status {
-  float: right;
+body header #logged_status h6 {
+  font-weight: bold;
+  display: inline-block;
+  background-color: yellow;
+  border-radius: 20px;
+  font-size: 1.8em;
+  -webkit-animation: pad infinite 3s;
+          animation: pad infinite 3s;
+}
+
+body header #logged_status h6:before {
+  content: "\21E8";
+}
+
+body header #logged_status h6:after {
+  content: "\21E6";
+}
+
+@-webkit-keyframes pad {
+  100% {
+    text-decoration: underline;
+  }
+}
+
+@keyframes pad {
+  100% {
+    text-decoration: underline;
+  }
 }
 
